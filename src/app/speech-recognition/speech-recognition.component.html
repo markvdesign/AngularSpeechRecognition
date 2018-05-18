@@ -1,0 +1,6 @@
+<h2>Click the button to talk</h2>
+<p>
+  {{displayTranscript}}
+</p>
+<button (mousedown)="startSpeech()" (mouseup)="stopSpeech()">Hold and Speak!</button>
+<button (click)="clearSpeech()">Clear</button>
