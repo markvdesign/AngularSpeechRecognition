@@ -9,7 +9,7 @@ function getWindow(): any {
 })
 export class WindowReferenceService {
   get nativeWindow () {
-    if (typeof window != undefined) {
+    if (typeof window !== undefined) {
       return getWindow();
     } else {
       return undefined;
