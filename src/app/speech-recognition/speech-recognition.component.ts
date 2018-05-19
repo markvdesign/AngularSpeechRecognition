@@ -35,11 +35,18 @@ export class SpeechRecognitionComponent implements OnInit {
       this.zone.run(() => {
         this.displayTranscript = ev.results[0][0].transcript;
       });
+      console.log(ev.results[0][0].transcript);
+    };
+    this.speechRecognition.onend = () => {
+      this.speechRecognition.start();
     };
   }
 
   stopSpeech() {
     this.speechRecognition.stop();
+    this.speechRecognition.onend = () => {
+      this.speechRecognition.stop();
+    };
     this.speechRecognitionStarted = false;
   }
 
