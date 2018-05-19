@@ -1,5 +1,7 @@
 <h2>Click the button to talk</h2>
-<p>{{displayTranscript}}</p>
-<button (mousedown)="startSpeech()">Start</button>
-<button (mouseup)="stopSpeech()">Stop</button>
-<button (click)="clearSpeech()">Clear</button>
+<p class="display-text-area">{{displayTranscript}}</p>
+<div class="btn-wrapper">
+  <button (mousedown)="startSpeech()" class="btn-accept">Start</button>
+  <button (mouseup)="stopSpeech()" class="btn-decline">Stop</button>
+  <button (click)="clearSpeech()" class="btn-clear">Clear</button>
+</div>
