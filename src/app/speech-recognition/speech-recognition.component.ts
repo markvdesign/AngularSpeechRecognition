@@ -11,6 +11,7 @@ import { WindowReferenceService } from '../window-reference.service';
 export class SpeechRecognitionComponent implements OnInit {
   private _window: any;
   speechRecognition: SpeechRecognition;
+  speechRecognitionStarted = false;
   displayTranscript = '';
 
   constructor(private zone: NgZone, windowRefService: WindowReferenceService) {
@@ -25,7 +26,11 @@ export class SpeechRecognitionComponent implements OnInit {
   }
 
   startSpeech() {
+    if (this.speechRecognitionStarted) {
+      return;
+    }
     this.speechRecognition.start();
+    this.speechRecognitionStarted = true;
     this.speechRecognition.onresult = (ev) => {
       this.zone.run(() => {
         this.displayTranscript = ev.results[0][0].transcript;
@@ -35,6 +40,7 @@ export class SpeechRecognitionComponent implements OnInit {
 
   stopSpeech() {
     this.speechRecognition.stop();
+    this.speechRecognitionStarted = false;
   }
 
   clearSpeech() {
